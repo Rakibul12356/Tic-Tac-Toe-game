@@ -1,11 +1,16 @@
+import Game from "./Board";
 
-function App() {
- 
+
+
+export default function App() {
+
   return (
     <>
-     <h2 className="text-center mt-2 text-2xl font-bold">Tic Tac Toe Project</h2>
+      <h2 className="text-center mt-2 underline text-xl font-bold  hover:text-blue-400">Tic Tac Toe Project</h2>
+      <div className="m-4 "> 
+      <Game/>
+          </div>
     </>
   )
 }
 
-export default App
