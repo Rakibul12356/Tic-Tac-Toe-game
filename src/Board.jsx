@@ -3,7 +3,7 @@ import { useState } from "react"
 function Square({ value, onSquareClick }) {
     return (<button
         onClick={onSquareClick}
-        className="bg-white border border-gray-400 h-12 w-12 m-1 leading-9 text-lg">{value}</button>)
+        className="bg-white border border-gray-400 h-12 w-12 m-1 leading-9 text-lg text-blue-500 font-bold">{value}</button>)
 }
 function Board({ xIsNext, onPlay, squares }) {
 
@@ -12,7 +12,7 @@ function Board({ xIsNext, onPlay, squares }) {
     if (winner) {
         status = `winner: ${winner}`
     } else {
-        status = " Next  Player" + (xIsNext ? "X" : "O")
+        status = " Next  Player :"+" " + (xIsNext ? "X" : "O")
     }
     function handleClick(i) {
         console.log(i)
@@ -30,7 +30,7 @@ function Board({ xIsNext, onPlay, squares }) {
     }
     return (
         <>
-            <div >{status}</div>
+            <div className=" text-2xl text-white font-bold" >{status}</div>
             <div className="flex">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
                 <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -55,7 +55,7 @@ export default function Game() {
     const [currentMoves ,setCurrentMoves]=useState(0)
     const currentSquares = history[currentMoves];
 
-    
+
     function handlePlay(nextSquares) {
         setXIsNext(!xIsNext)
         const nextHistory = [...history.slice(0,currentMoves+1),nextSquares]
@@ -84,11 +84,11 @@ export default function Game() {
     
     })
     return (
-        <div className=" flex gap-4 ">
-            <div>
+        <div className=" flex gap-4  justify-center sm:grid sm:grid-cols-1">
+            <div className="bg-red-500 rounded-lg shadow-red-200 shadow-2xl p-4 ">
                 <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             </div>
-            <div className="bg-gray-400">
+            <div className="bg-orange-300 p-4 rounded-lg">
                 <ol>{moves }</ol>
             </div>
         </div>
